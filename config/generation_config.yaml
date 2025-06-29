@@ -1,0 +1,20 @@
+# Generation Pipeline Configuration
+
+# Phase 1: Attribute Generation (Thematic Bucketing Strategy)
+attribute_generation:
+  target_counts:
+    themes: 12              # Core themes for thematic bucketing
+    thematic_features: 6    # Features per theme (12 themes × 6 = 72 total)
+    art_styles: 8           # Visual styles
+    music_styles: 10        # Audio styles  
+    developers: 12          # Fictional studios
+  
+# Phase 2: Game Generation  
+game_generation:
+  total_games: 120        # Generate extra for quality filtering
+  target_final: 100       # Final dataset size
+  diversity_threshold: 0.8 # Similarity threshold for deduplication
+  
+  # Hybrid approach settings
+  attribute_adherence: 0.8  # 80% follow sampled attributes
+  creative_flexibility: 0.2 # 20% LLM creative deviation

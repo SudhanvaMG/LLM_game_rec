@@ -1,0 +1,40 @@
+# LLM Configuration
+# Multi-model setup for different tasks
+
+# Primary provider
+provider: "google"  # Using Google Gemini
+api_key_env: "GOOGLE_API_KEY"
+
+# Task-specific model configuration
+models:
+  attribute_generation:
+    model: "gemini-2.5-flash"
+    temperature: 0.8        # Higher creativity for brainstorming
+    
+  game_generation:
+    model: "gemini-2.5-pro"
+    temperature: 0.7        # Balanced creativity/consistency
+    
+  validation:
+    model: "gemini-2.5-flash"
+    temperature: 0.3        # Lower for analytical tasks
+  
+  similarity_analysis:
+    model: "gemini-2.0-flash"
+    temperature: 0.3        # Lower temperature for consistent ranking
+  
+  embeddings_summary:
+    model: "gemini-2.0-flash"
+    temperature: 0.6      
+
+# Rate limiting (adjust based on Gemini limits)
+rate_limits:
+  requests_per_minute: 60
+  batch_size: 10
+  retry_attempts: 3
+  retry_delay: 2  # seconds
+
+# Fallback configuration
+fallback:
+  enabled: true
+  model: "gemini-pro"  # Fallback to standard model if specialized fails 
